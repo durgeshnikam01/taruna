@@ -422,7 +422,7 @@ const CreateProposal = () => {
       // Clean price of commas if any
       const cleanPrice = data.projectPrice.replace(/,/g, '');
       
-      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
+      const baseUrl = import.meta.env.VITE_API_URL || 'https://taruna.onrender.com/api';
       const response = await fetch(`${baseUrl}/pricing/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: taruna-proposals
+    env: node
+    plan: free
+    buildCommand: "cd frontend && npm install && npm run build && cd ../backend && npm install"
+    startCommand: "cd backend && npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromValue: "" # TO BE FILLED IN RENDER DASHBOARD
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GROQ_API_KEY
+        fromValue: "" # TO BE FILLED IN RENDER DASHBOARD
+      - key: VITE_API_URL
+        value: "/api"

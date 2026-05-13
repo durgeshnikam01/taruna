@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Sora:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-50: #f0f7ff;
+    --brand-100: #e0effe;
+    --brand-200: #bae0fd;
+    --brand-300: #7cc8fb;
+    --brand-400: #37aaf5;
+    --brand-500: #0d8de2;
+    --brand-600: #0270bf;
+    --brand-700: #03599a;
+    --brand-800: #074c7f;
+    --brand-900: #0c406a;
+    --brand-950: #082946;
+  }
+
+  body {
+    @apply font-sans bg-slate-50 text-slate-900 antialiased;
+  }
+
+  .font-heading {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .font-brand {
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+@layer components {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full hover:bg-slate-300 transition-colors;
+  }
+
+  /* TipTap Overrides */
+  .ProseMirror {
+    @apply outline-none h-full;
+  }
+
+  .ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    @apply text-slate-400 float-left h-0 pointer-events-none;
+  }
+
+  /* Table Styles for TipTap */
+  .ProseMirror table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .ProseMirror td,
+  .ProseMirror th {
+    min-width: 1em;
+    border: 2px solid #ced4da;
+    padding: 3px 5px;
+    vertical-align: top;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .ProseMirror th {
+    font-weight: bold;
+    text-align: left;
+    background-color: #f8f9fa;
+  }
+
+  .ProseMirror .selectedCell:after {
+    z-index: 2;
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    background: rgba(200, 200, 255, 0.4);
+    pointer-events: none;
+  }
+
+  .ProseMirror .column-resize-handle {
+    position: absolute;
+    right: -2px;
+    top: 0;
+    bottom: -2px;
+    width: 4px;
+    background-color: #adf;
+    pointer-events: none;
+  }
+
+  .ProseMirror .tableWrapper {
+    overflow-x: auto;
+  }
+
+  .resize-cursor {
+    cursor: ew-resize;
+    cursor: col-resize;
+  }
+
+  [contenteditable] img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 8px 0;
+    max-height: 400px;
+    object-fit: contain;
+  }
+}
+
+/* PDF Print Specific Styles */
+@media print {
+  .proposal-page {
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-after: always !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
